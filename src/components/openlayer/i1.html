@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>天地图画线取点demo</title>
+    <link href="/SvcCenter/geomap-api/JsCodeDemo/css/demoComm.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/SvcCenter/geomap-api/JsCodeDemo/js/api.js"></script>
+</head>
+<body>
+<div id="simpleMap"></div>
+<div id="bamboo">
+    <div class="banni">
+        <input type="button" value="开启画线取点功能" onclick="openControl();"/>
+        <input type="button" value="关闭画线取点功能" onclick="closeControl(this);"/>
+    </div>
+</div>
+<script type="text/javascript">
+    var map, vectorLayer, drawFeatureControl;
+    window.onload = function(){
+        map = new Geo.View2D.Map("simpleMap", {layerGroupLoaded: true});
+        map.setCenter(new Geo.LonLat(118.5, 25.75));
+        var stylemap = new Geo.StyleMap({
+            'default': new Geo.Style({
+                pointRadius: 12,
+                fillColor: "#ee0000",
+                fillOpacity: 0.7,
+                strokeColor: "#ee0000",
+                strokeWidth: 3,
+                strokeOpacity: 1
+            })
+        });
+        vectorLayer = new Geo.View2D.Layer.Vector("Vector Layer",{styleMap: stylemap});
+        map.addLayers([vectorLayer]);
+        //定义绘制控件
+
+        drawFeatureControl = new Geo.View2D.Control.DrawFeature(vectorLayer,Geo.View2D.Handler.Path,
+            {
+                featureAdded: function() {
+                    var points = arguments[0].geometry.components;  //返回的点坐标集合
+                    console.log("画线结束，开始取点。");
+                    for (var i = 0;i <points.length;i++){
+                        var point = points[i];
+                        console.log("我是第 "+i+"个点，经度："+point.x+", 纬度："+point.y);
+                    }
+                }
+            }
+        );
+
+        //添加控件到地图中
+        map.addControl(drawFeatureControl);
+    }
+    //开启画线取点功能
+    function openControl(){
+        drawFeatureControl.activate();
+    }
+
+    //关闭画线取点功能
+    function closeControl(){
+        drawFeatureControl.deactivate();
+    }
+</script>
+</body>
+</html>
