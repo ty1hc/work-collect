@@ -2,22 +2,27 @@
   <div id="app">
 <!--    <img alt="Vue logo" src="./assets/logo.png">-->
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
+      <!--      <origin></origin>-->
+
       <works></works>
-<!--      <origin></origin>-->
+
+      <three></three>
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import works from './components/collect/works.vue'
 // import origin from './components/originTable/origin.vue'
+import works from './components/collect/works.vue'
+import three from './components/threeJs/threeYellow'
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
-      works
       // origin
+    // HelloWorld,
+      works,
+      three
   }
 }
 </script>

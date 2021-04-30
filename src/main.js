@@ -6,6 +6,7 @@ import Avue from '@smallwei/avue';
 import '@smallwei/avue/lib/index.css';
 import * as echarts from 'echarts';
 
+
 // import axios from 'axios'
 
 Vue.config.productionTip = false
@@ -17,3 +18,5 @@ new Vue({
   render: h => h(App),
 }).$mount('#app')
 // window.axios = axios
+
+
