@@ -4,7 +4,7 @@
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
       <!--      <origin></origin>-->
 
-      <works></works>
+<!--      <works></works>-->
 
       <three></three>
   </div>
@@ -13,7 +13,7 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import origin from './components/originTable/origin.vue'
-import works from './components/collect/works.vue'
+// import works from './components/collect/works.vue'
 import three from './components/threeJs/threeYellow'
 
 export default {
@@ -21,7 +21,7 @@ export default {
   components: {
       // origin
     // HelloWorld,
-      works,
+    //   works,
       three
   }
 }
